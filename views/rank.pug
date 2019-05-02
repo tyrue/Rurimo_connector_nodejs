@@ -4,7 +4,7 @@ html
     body
         h1= title
         div= time
-        table(border = "1" )
+        table(border = "1" width = "400")
             thead
                 td 직업
                 td 닉네임
@@ -29,6 +29,6 @@ html
                         td 전사                   
                     td #{data[i].nickname}
                     td #{data[i].LEVEL}
-                    td #{data[i].hp}
-                    td #{data[i].mp}
+                    td #{data[i].maxhp}
+                    td #{data[i].maxmp}
 

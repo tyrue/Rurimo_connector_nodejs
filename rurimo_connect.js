@@ -13,17 +13,26 @@ app.listen(3500, function () {
 });
 
 var user_table = "userinfo";
+app.get('/', function (req, res) // home 페이지
+    {
+        res.render('home', {
+            time: Date(),
+            title: '흑부엉의 바람의나라 온라인!'
+        }); // 템플릿을 가져와서 적용한다는 뜻
+    });
+
 app.get('/ranking', function (req, res) // home 페이지
 {
-    db.query(`select job, nickname, LEVEL, hp, mp from ${user_table} order by LEVEL desc`, function (error, result) {
+    db.query(`select job, nickname, LEVEL, maxhp, maxmp from ${user_table} order by (maxhp + maxmp) desc
+        `, function (error, ranker) {
         if (error) {
             throw error;
         }
-
         res.render('rank', {
             time: Date(),
             title: '흑바온 Ranking!',
-            data: result
+            data: ranker
+
         }); // 템플릿을 가져와서 적용한다는 뜻
     });
 });
