@@ -1,34 +1,40 @@
-html
-    head
-        title= title
-    body
-        h1= title
-        div= time
-        table(border = "1" width = "400")
-            thead
-                td 직업
-                td 닉네임
-                td 레벨
-                td 체력
-                td 마력
-            - for(var i = 0; i < data.length; i++)
-                tr
-                    - if(data[i].job == 1)
-                        td 평민
-                    - if(data[i].job == 2)
-                        td 주술사
-                    - if(data[i].job == 3)
-                        td 술사
-                    - if(data[i].job == 4)
-                        td 도사
-                    - if(data[i].job == 5)
-                        td 현사
-                    - if(data[i].job == 6)
-                        td 현인
-                    - if(data[i].job == 7)
-                        td 전사                   
-                    td #{data[i].nickname}
-                    td #{data[i].LEVEL}
-                    td #{data[i].maxhp}
-                    td #{data[i].maxmp}
+extends layout
 
+block content
+  h1= title
+  p 기준은 최대체력 + 최대마력 입니다.
+  div= time
+  table
+    thead
+      td 순위
+      td 직업
+      td 닉네임
+      td 레벨
+      td 최대 체력
+      td 최대 마력
+    - for(var i = 0; i < data.length; i++)
+      tr
+        td #{i + 1}
+        - if(data[i].job == 1)
+          td 평민
+        - if(data[i].job == 2)
+          td 주술사
+        - if(data[i].job == 3)
+          td 술사
+        - if(data[i].job == 4)
+          td 도사
+        - if(data[i].job == 5)
+          td 현사
+        - if(data[i].job == 6)
+          td 현인
+        - if(data[i].job == 7)
+          td 전사                   
+        td #{data[i].nickname}
+        -
+          if(data[i].LEVEL >= 99)
+          {
+            data[i].LEVEL = "지존"
+          }
+        td #{data[i].LEVEL}
+        td #{data[i].maxhp}
+        td #{data[i].maxmp}
