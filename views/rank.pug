@@ -31,6 +31,10 @@ block content
           td 전사                   
         - if(data[i].job == 8)
           td 검객        
+        - if(data[i].job == 9)
+          td 검제 
+        - if(data[i].job == 10)
+          td 검황        
         td #{data[i].nickname}
         -
           if(data[i].LEVEL >= 99)
