@@ -38,6 +38,11 @@ table, td{
   border-collapse: collapse;
   border: 2px solid #000000;
   padding: 7px;
+  color: black;
+}
+
+td2{
+  color: red;
 }
 
 table, tr{

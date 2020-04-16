@@ -14,7 +14,10 @@ block content
       td 최대 마력
     - for(var i = 0; i < data.length; i++)
       tr
-        td #{i + 1}
+        if(i < 3)
+          td(style="color:red; font-size:20px") #{i + 1}
+        else
+          td #{i + 1}
         - if(data[i].job == 1)
           td 평민
         - if(data[i].job == 2)

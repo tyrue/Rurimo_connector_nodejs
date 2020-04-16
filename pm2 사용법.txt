@@ -1,0 +1,10 @@
+pm2 start app.js pm2 start app.js --watch 
+// 실행할 js파일을 --watch 옵션으로 실행하면 소스 수정후 저장하면 
+// 자동으로 node를 재시작해줘서 소스적용이 된다. 
+
+pm2 start app.js --watch --no-daemon 
+//백그라운드로 실행되는 프로그램을 데몬이라고 부릅니다. 
+//nodaemon을 치면 백그라운드 실행이아니라서 실행후 바로 log를 볼수있게됩니다. 
+
+pm2 start app.js --watch --ignore-watch="(파일경로)" --no-daemon 
+//이렇게 실행할경우 해당 파일경로에 파일들이 수정될때는 서버가 재시작 하지 않는다
