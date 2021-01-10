@@ -1,71 +1,78 @@
 ﻿extends layout
 
 block content
-  h1= title
-  p 기준은 최대체력 + 최대마력 입니다.
-  div= time
-  table
-    thead
-      td 순위
-      td 직업
-      td 닉네임
-      td 레벨
-      td 최대 체력
-      td 최대 마력
-    - for(var i = 0; i < data.length; i++)
-      tr
-        if(i < 3)
-          td(style="color:red; font-size:20px") #{i + 1}
-        else
-          td #{i + 1}
-        - if(data[i].job == 1)
-          td 평민
-        - if(data[i].job == 2)
-          td 주술사
-        - if(data[i].job == 3)
-          td 술사
-        - if(data[i].job == 4)
-          td 도사
-        - if(data[i].job == 5)
-          td 현사
-        - if(data[i].job == 6)
-          td 현인
-        - if(data[i].job == 7)
-          td 전사                   
-        - if(data[i].job == 8)
-          td 검객
-        - if(data[i].job == 9)
-          td 검제
-        - if(data[i].job == 10)
-          td 검황             
-        - if(data[i].job == 11)
-          td 도인   
-        - if(data[i].job == 12)
-          td 명인              
-        - if(data[i].job == 13)
-          td 진인               
-        - if(data[i].job == 14)
-          td 현자              
-        - if(data[i].job == 15)
-          td 검성              
-        - if(data[i].job == 16)
-          td 진선                
-        - if(data[i].job == 17)
-          td 도적   
-        - if(data[i].job == 18)
-          td 자객                
-        - if(data[i].job == 19)
-          td 진검   
-        - if(data[i].job == 20)
-          td 귀검
-        - if(data[i].job == 21)
-          td 태성
-        td #{data[i].nickname}
-        -
-          if(data[i].LEVEL >= 99)
-          {
-            data[i].LEVEL = "지존"
-          }
-        td #{data[i].LEVEL}
-        td #{data[i].maxhp}
-        td #{data[i].maxmp}
+  div(class="card-panel teal lighten-2" style="text-align: center")
+    h3= title
+  div(style="text-align: center", class="card-panel teal lighten-5")
+    = time
+    p 기준은 최대체력 + 최대마력 입니다.
+
+  div()
+    table(class="highlight", class="responsive-table", class="centered" class="card-panel lime lighten-5")
+      thead(class="card-panel lime lighten-3")
+        tr
+          th 순위
+          th 직업
+          th 닉네임
+          th 레벨
+          th 최대 체력
+          th 최대 마력
+
+      tbody
+      - for(var i = 0; i < data.length; i++)
+        tr
+          if(i < 3)
+            td(style="color:red; font-size:20px") #{i + 1}
+          else
+            td #{i + 1}
+          - if(data[i].job == 1)
+            td 평민
+          - if(data[i].job == 2)
+            td 주술사
+          - if(data[i].job == 3)
+            td 술사
+          - if(data[i].job == 4)
+            td 도사
+          - if(data[i].job == 5)
+            td 현사
+          - if(data[i].job == 6)
+            td 현인
+          - if(data[i].job == 7)
+            td 전사                   
+          - if(data[i].job == 8)
+            td 검객
+          - if(data[i].job == 9)
+            td 검제
+          - if(data[i].job == 10)
+            td 검황             
+          - if(data[i].job == 11)
+            td 도인   
+          - if(data[i].job == 12)
+            td 명인              
+          - if(data[i].job == 13)
+            td 진인               
+          - if(data[i].job == 14)
+            td 현자              
+          - if(data[i].job == 15)
+            td 검성              
+          - if(data[i].job == 16)
+            td 진선                
+          - if(data[i].job == 17)
+            td 도적   
+          - if(data[i].job == 18)
+            td 자객                
+          - if(data[i].job == 19)
+            td 진검   
+          - if(data[i].job == 20)
+            td 귀검
+          - if(data[i].job == 21)
+            td 태성
+          td #{data[i].nickname}
+          -
+            if(data[i].LEVEL >= 99)
+            {
+              data[i].LEVEL = "지존"
+            }
+          td #{data[i].LEVEL}
+          td #{data[i].maxhp}
+          td #{data[i].maxmp}
