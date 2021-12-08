@@ -1,7 +1,7 @@
 ﻿extends layout
 
 block content
-  div(class="card-panel teal lighten-2" style="text-align: center")
+  div(class="z-depth-5" class="card-panel green darken-4" class="white-text"  style="text-align: center")
     h3= title
   div(style="text-align: center", class="card-panel teal lighten-5")
     = time
@@ -9,7 +9,7 @@ block content
 
   div()
     table(class="highlight", class="responsive-table", class="centered" class="card-panel lime lighten-5")
-      thead(class="card-panel lime lighten-3")
+      thead(class="card-panel lime lighten-3" style="top:-25px; position:relative;")
         tr
           th 순위
           th 직업
@@ -18,11 +18,11 @@ block content
           th 최대 체력
           th 최대 마력
 
-      tbody
+      tbody(style="display: flex; align-items:center;")
       - for(var i = 0; i < data.length; i++)
         tr
           if(i < 3)
-            td(style="color:red; font-size:20px") #{i + 1}
+            td(style="color:red; font-size:20px; padding:11px;") #{i + 1}
           else
             td #{i + 1}
           - if(data[i].job == 1)
