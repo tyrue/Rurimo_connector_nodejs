@@ -25,10 +25,10 @@ app.get('/', function (req, res) // home 페이지
 app.get('/ranking', function (req, res) // home 페이지
 {
     db.query(`
-    select job, nickname, LEVEL, maxhp, maxmp 
+    select * 
     from ${user_table} 
     where id != 'anwjr'
-    order by (maxhp + maxmp) desc
+    order by (max_hp + max_sp) desc
     `, function (error, result) {
         if (error) {
             throw error;

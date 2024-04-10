@@ -6,7 +6,12 @@ block content
   div(style="text-align: center", class="card-panel teal lighten-5")
     = time
     p 기준은 최대체력 + 최대마력 입니다.
-
+    button(type='button') 전체 
+    button(type='button') 전사
+    button(type='button') 주술사
+    button(type='button') 도적
+    button(type='button') 도사
+  
   div()
     table(class="highlight", class="responsive-table", class="centered" class="card-panel lime lighten-5")
       thead(class="card-panel lime lighten-3" style="top:-25px; position:relative;")
@@ -17,62 +22,62 @@ block content
           th 레벨
           th 최대 체력
           th 최대 마력
+          th 체력 마력 합
 
-      tbody(style="display: flex; align-items:center;")
-      - for(var i = 0; i < data.length; i++)
-        tr
-          if(i < 3)
-            td(style="color:red; font-size:20px; padding:11px;") #{i + 1}
-          else
+        tbody(style="display: flex; align-items:center;")
+        - for(var i = 0; i < data.length; i++)
+          tr(style=`${i < 3 ? 'color:#090; font-size:20px; padding:11px;' : ''}`)
             td #{i + 1}
-          - if(data[i].job == 1)
-            td 평민
-          - if(data[i].job == 2)
-            td 주술사
-          - if(data[i].job == 3)
-            td 술사
-          - if(data[i].job == 4)
-            td 도사
-          - if(data[i].job == 5)
-            td 현사
-          - if(data[i].job == 6)
-            td 현인
-          - if(data[i].job == 7)
-            td 전사                   
-          - if(data[i].job == 8)
-            td 검객
-          - if(data[i].job == 9)
-            td 검제
-          - if(data[i].job == 10)
-            td 검황             
-          - if(data[i].job == 11)
-            td 도인   
-          - if(data[i].job == 12)
-            td 명인              
-          - if(data[i].job == 13)
-            td 진인               
-          - if(data[i].job == 14)
-            td 현자              
-          - if(data[i].job == 15)
-            td 검성              
-          - if(data[i].job == 16)
-            td 진선                
-          - if(data[i].job == 17)
-            td 도적   
-          - if(data[i].job == 18)
-            td 자객                
-          - if(data[i].job == 19)
-            td 진검   
-          - if(data[i].job == 20)
-            td 귀검
-          - if(data[i].job == 21)
-            td 태성
-          td #{data[i].nickname}
-          -
-            if(data[i].LEVEL >= 99)
-            {
-              data[i].LEVEL = "지존"
-            }
-          td #{data[i].LEVEL}
-          td #{data[i].maxhp}
-          td #{data[i].maxmp}
+            td #{data[i].class_name || getClassName(data[i].class_id)}
+            td #{data[i].nickname}
+            td #{data[i].level >= 99 ? '지존' : data[i].level}
+            td #{data[i].max_hp}
+            td #{data[i].max_sp}
+            td #{data[i].max_hp + data[i].max_sp}
+
+        - function getClassName(class_id) 
+           case class_id
+            when 1
+              - return '평민'
+            when 2
+              - return '주술사'
+            when 3
+              - return '술사'
+            when 4
+              - return '도사'
+            when 5
+              - return '현사'
+            when 6
+              - return '현인'
+            when 7
+              - return '전사'
+            when 8
+              - return '검객'
+            when 9
+              - return '검제'
+            when 10
+              - return '검황'
+            when 11
+              - return '도인'
+            when 12
+              - return '명인'
+            when 13
+              - return '진인'
+            when 14
+              - return '현자'
+            when 15
+              - return '검성'
+            when 16
+              - return '진선'
+            when 17
+              - return '도적'
+            when 18
+              - return '자객'
+            when 19
+              - return '진검'
+            when 20
+              - return '귀검'
+            when 21
+              - return '태성'
+            default
+              - return ''
