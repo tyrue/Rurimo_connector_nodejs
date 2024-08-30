@@ -5,7 +5,7 @@ block content
     h3= title
   div(style="text-align: center", class="card-panel teal lighten-5")
     = time
-    p 기준은 최대체력 + 최대마력 입니다.
+    p 기준은 최대체력 + (최대마력 * 2) 입니다.
     button(type='button') 전체 
     button(type='button') 전사
     button(type='button') 주술사
@@ -22,7 +22,7 @@ block content
           th 레벨
           th 최대 체력
           th 최대 마력
-          th 체력 마력 합
+          th 체력 + (마력 * 2)
 
         tbody(style="display: flex; align-items:center;")
         - for(var i = 0; i < data.length; i++)
@@ -31,9 +31,9 @@ block content
             td #{data[i].class_name || getClassName(data[i].class_id)}
             td #{data[i].nickname}
             td #{data[i].level >= 99 ? '지존' : data[i].level}
-            td #{data[i].max_hp}
-            td #{data[i].max_sp}
-            td #{data[i].max_hp + data[i].max_sp}
+            td #{data[i].max_hp.toLocaleString()}
+            td #{data[i].max_sp.toLocaleString()}
+            td #{(data[i].max_hp + data[i].max_sp * 2).toLocaleString()}
 
         - function getClassName(class_id) 
            case class_id

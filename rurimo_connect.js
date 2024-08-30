@@ -28,7 +28,7 @@ app.get('/ranking', function (req, res) // home 페이지
     select * 
     from ${user_table} 
     where id != 'anwjr'
-    order by (max_hp + max_sp) desc
+    order by (max_hp + max_sp * 2) desc
     `, function (error, result) {
         if (error) {
             throw error;

@@ -1,0 +1,1 @@
+pm2 start rurimo_connect.js --watch --no-daemon
